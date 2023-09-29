@@ -8,20 +8,19 @@
         <a class="btn" href="/cubes/{{cube._id}}/attach-accessory">Attach Accessory</a>
       </div>
       </div>
+      <div class="accessories">
+      {{#if hasAccessories}}
             <h2>Accessories</h2>
-            <div class="accessories">
-
-            {{#if hasAccessories}}
             {{#each cube.accessories}}
                 <div class="accessory">
                     <img src="{{imageUrl}}" alt="stickerName">
                     <h3>{{name}}</h3>
                     <p>{{description}}</p>
                 </div>
-
             {{/each}}
+            <div>
             {{else}}
-                <h3 class="italic">This cube has no accessories yet...</h3>
+            <h3 class="italic">This cube has no accessories yet...</h3>
             {{/if}}
             </div>
     </main>
