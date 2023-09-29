@@ -7,9 +7,10 @@ exports.create = async (cubeData) => {
     return cube;
 }
 
-exports.getAll = (search, from, to) => {
-    let filterCubes = [...cubes];
+exports.getAll = async (search, from, to) => {
+    let filterCubes = await Cube.find().lean();
 
+    // this will be filtered later with mongoose
     if(search){
         filterCubes = filterCubes.filter((cube) => 
         cube.name.toLowerCase().includes(search.toLowerCase()));
@@ -28,6 +29,4 @@ exports.getAll = (search, from, to) => {
     return filterCubes;
 }
 
-exports.getSingleCube = (id) => {
-    return cubes.find(cube => cube.id === id);
-}
+exports.getSingleCube = (id) => Cube.findById(id);
